@@ -1,0 +1,23 @@
+[
+    {
+        "owner" : "kubernetes",
+        "repository" : "kubernetes",
+        "release" : false,
+        "issue" : {
+            "check" : true,
+            "keywords" : [],
+            "labels" : []
+        },
+        "pull_request" : {
+            "check" : false,
+            "keywords" : [],
+            "labels" : []
+        },
+        "commit" : {
+            "check" : false,
+            "keywords" : [
+                "fix"
+            ],            
+        }
+    }
+]
