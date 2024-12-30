@@ -18,7 +18,7 @@ def check_and_send(repo, last_check_time):
         r_update = github_check_release(last_check_time, GITHUB_API_TOKEN, repo)
         if r_update.get("update", False):
             for d in r_update['data']:
-                asyncio.run(notify_to_channel("r", repo['repository'], d))
+                notify_to_channel("r", repo['repository'], d)
 
     if repo["issue"]["check"]:
         i_update = github_check_issue(last_check_time, GITHUB_API_TOKEN, repo)
@@ -30,13 +30,13 @@ def check_and_send(repo, last_check_time):
         pr_update = github_check_pull_request(last_check_time, GITHUB_API_TOKEN, repo)
         if pr_update.get("update", False):
             for d in pr_update['data']:
-                asyncio.run(notify_to_channel("pr", repo['repository'], d))
+                notify_to_channel("pr", repo['repository'], d)
 
     if repo["commit"]["check"]:
         c_update = github_check_commit(last_check_time, GITHUB_API_TOKEN, repo)
         if c_update.get("update", False):
             for d in c_update['data']:
-                asyncio.run(notify_to_channel("c", repo['repository'], d))
+                notify_to_channel("c", repo['repository'], d)
 
 def notify_to_channel(kind, channel, obj):
     intents = discord.Intents.default()
