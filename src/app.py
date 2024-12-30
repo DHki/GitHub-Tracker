@@ -50,7 +50,7 @@ def notify_to_channel(kind, channel, obj):
         
 
 def main():
-    last_check_time = str(datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
+    last_check_time = str((datetime.now(timezone.utc) - timedelta(minutes=10)).strftime("%Y-%m-%dT%H:%M:%SZ"))
 
     while True:
         with open("repo.json", "r") as file:
@@ -67,7 +67,7 @@ def main():
         for th in threads:
             th.join()
 
-        time.sleep(300)
+        time.sleep(600)
 
 
 if __name__ == "__main__":
